@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html><html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Order Sosmed</title>
+  <title>Order WhatsApp</title>
   <style>
     * {box-sizing: border-box;}
     body {
@@ -173,65 +172,48 @@
     }
   </style>
 </head>
-<body>
-
-<button class="btn-back" onclick="window.location.href='sosmed.html'">Back</button>
+<body><button class="btn-back" onclick="window.location.href='sosmed.html'">Back</button>
 
 <div class="product-logo-wrapper">
   <div class="product-logo">
-    <img src="whatsapp.png" alt="WA Logo">
+    <img src="whatsapp.jpg" alt="WhatsApp Logo">
   </div>
-</div>
-
-<div class="category-banner">
+</div><div class="category-banner">
   <h2>JASA SUNTIK SOSMED WHATSAPP</h2>
-</div>
-
-<div class="form-background">
+</div><div class="form-background">
   <label>Link Target</label>
-  <input type="text" id="link" placeholder="Masukkan link target">
+  <input type="text" id="link" placeholder="Masukkan link target"><label>Pilih Layanan</label>
 
-  <label>Pilih Layanan</label>
   <div class="custom-select-input" onclick="toggleDropdown('layanan-list')">Pilih layanan</div>
   <div class="dropdown-list" id="layanan-list">
-    <div class="dropdown-item" onclick="selectLayanan('channel')">WhatsApp Channel Member [Global]</div>
+    <div class="dropdown-item" onclick="selectLayanan('channel')">WhatsApp Channel Member [Global] </div>
     <div class="dropdown-item" onclick="selectLayanan('emoji')">WhatsApp Channel Reacht Emoji [Global] </div>
-  </div>
+  </div><label>Pilih Jumlah Pesanan</label>
 
-  <label>Pilih Jumlah Pesanan</label>
   <div class="custom-select-input" onclick="toggleDropdown('jumlah-list')">Pilih jumlah</div>
-  <div class="dropdown-list" id="jumlah-list"></div>
-
-  <div class="total-harga">Total: Rp <span id="total">0</span></div>
-
-  <div class="deskripsi-panduan">
+  <div class="dropdown-list" id="jumlah-list"></div>  <div class="total-harga">Total: Rp <span id="total">0</span></div>  <div class="deskripsi-panduan">
     Pilih layanan dan jumlah pesanan. Pastikan data yang Anda masukkan benar sebelum melanjutkan.
   </div>
-</div>
-
-<button class="btn-order" onclick="orderSekarang()">Lanjut Order</button>
+</div><button class="btn-order" onclick="orderSekarang()">Lanjut Order</button>
 
 <div class="popup" id="popup-confirm">
   <div class="popup-content">
     <h3>Konfirmasi</h3>
-    <div id="summary-text"></div>
+    <div id="summary-text"></div><label>Nama</label>
+<input type="text" id="nama" placeholder="Nama kamu">
 
-    <label>Nama</label>
-    <input type="text" id="nama" placeholder="Nama kamu">
-
-    <label>Metode Pembayaran</label>
-    <div class="custom-select-input" onclick="toggleDropdown('metode-list')">Pilih Metode</div>
-    <div class="dropdown-list" id="metode-list">
-      <div class="dropdown-item" onclick="selectMetode('DANA')">DANA</div>
-      <div class="dropdown-item" onclick="selectMetode('QRIS')">QRIS</div>
-    </div>
-
-    <button class="btn-pesan" onclick="kirimWhatsApp()">Pesan Sekarang</button>
-    <button class="btn-batal" onclick="document.getElementById('popup-confirm').style.display='none'">Batal</button>
-  </div>
+<label>Metode Pembayaran</label>
+<div class="custom-select-input" onclick="toggleDropdown('metode-list')">Pilih Metode</div>
+<div class="dropdown-list" id="metode-list">
+  <div class="dropdown-item" onclick="selectMetode('DANA')">DANA</div>
+  <div class="dropdown-item" onclick="selectMetode('QRIS')">QRIS</div>
 </div>
 
-<script>
+<button class="btn-pesan" onclick="kirimWhatsApp()">Pesan Sekarang</button>
+<button class="btn-batal" onclick="document.getElementById('popup-confirm').style.display='none'">Batal</button>
+
+  </div>
+</div><script>
   let layananDipilih = '', jumlahDipilih = 0, metodeDipilih = '';
 
   function toggleDropdown(id) {
@@ -285,7 +267,7 @@
   function orderSekarang() {
     const link = document.getElementById('link').value.trim();
     if (!link || !layananDipilih || !jumlahDipilih) {
-      alert('Harap lengkapi semua data!');
+      alert('Harap isi data ini terlebih dahulu!');
       return;
     }
     const layananText = layananDipilih === 'channel' ? 'WhatsApp Channel Member' : 'WhatsApp Reacht Emoji';
@@ -296,12 +278,10 @@
 
   function kirimWhatsApp() {
     const nama = document.getElementById('nama').value.trim();
-    if (!nama) return alert('Nama harus diisi!');
+    if (!nama || !metodeDipilih) return alert('Nama dan metode pembayaran wajib diisi!');
     const link = document.getElementById('link').value.trim();
     const msg = `Halo Admin, saya ingin order:\nLayanan: ${layananDipilih}\nJumlah: ${jumlahDipilih}\nLink: ${link}\nNama: ${nama}\nMetode: ${metodeDipilih}`;
     window.open(`https://wa.me/628979687563?text=${encodeURIComponent(msg)}`, '_blank');
   }
-</script>
-
-</body>
+</script></body>
 </html>
