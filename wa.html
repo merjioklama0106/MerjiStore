@@ -250,9 +250,9 @@
 
   function updateTotal() {
     let total = 0;
-    if (layananDipilih === 'channel') {
+    if (layananDipilih === 'Whatsapp channel member') {
       total = 6000 + ((jumlahDipilih - 100)/100) * 3000;
-    } else if (layananDipilih === 'emoji') {
+    } else if (layananDipilih === 'Whatsapp channel reacht emoji') {
       total = jumlahDipilih * 10;
     }
     document.getElementById('total').innerText = total;
@@ -267,7 +267,7 @@
   function orderSekarang() {
     const link = document.getElementById('link').value.trim();
     if (!link || !layananDipilih || !jumlahDipilih) {
-      alert('Harap isi data ini terlebih dahulu!');
+      alert('Harap isi data terlebih dahulu!');
       return;
     }
     const layananText = layananDipilih === 'channel' ? 'WhatsApp Channel Member' : 'WhatsApp Reacht Emoji';
